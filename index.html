@@ -1,0 +1,110 @@
+<html> 
+  <head> <center><h1>Tax Calculator </h1></center>
+      <script src="script.js"> </script>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Tax Calculation</title> 
+    <link rel="shortcut icon" type="image/jpg" href="Tax-PNG-Image.png"/>
+    <style>
+        /* Chrome, Safari, Edge, Opera */
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+          margin: 0;
+        }
+        
+        /* Firefox */
+        input[type=number] {
+          -moz-appearance: textfield;
+        }
+        </style>
+
+  </head>
+ 
+  <body> 
+    <form id="myForm">
+        <div class="form-group">
+          <label for="maritalStatus"><b>Marital Status:</b></label>
+          <select id="maritalStatus" class="form-select" aria-label="Default select example">
+            <option value="married">Married</option>
+            <option value="unmarried">Unmarried</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="monthlyIncome"><b>Income:</b></label>
+          <input type="number" autocomplete="off" class="form-control" id="monthlyIncome" min=1  placeholder="Gross Salary Per Month">
+        </div>
+        
+        <button type="button" class="btn btn-outline-success" onclick="taxCal()">Calculate</button> 
+        <button type="button" class="btn btn-outline-primary" onclick="clearValues()">Clear</button>
+        
+      </form>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm">
+           <b> Annual Gross Salary </b>
+            <p id="annualGrossSalary">0.00</p>
+          </div>
+          <div class="col-sm">
+            <b>Taxable Income</b>
+            <p id="taxableIncome">0.00</p>
+          </div>
+          <div class="col-sm">
+            <b>Net Payable Tax</b>
+            <p id="payableTax">0.00</p>
+          </div>
+          <div class="col-sm">
+           <b>Monthly Tax</b>
+            <p id="monthlyTax">0.00</p>
+          </div>
+          <div class="col-sm">
+           <b>Cash In Hand Per Month</b>
+            <p id="cashInHand">0.00</p>
+          </div>
+        </div>
+
+        <table class="table table-hover table-dark"><center><b>Tax Slab</b></center>
+            <thead>
+              <tr>
+                <th scope="col">S.No.</th>
+                <th scope="col">Slab</th>
+                <th scope="col">Taxable Amount</th>
+                <th scope="col">Tax Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>1%</td>
+                <td>400000</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>10%</td>
+                <td>100000</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>20%</td>
+                <td>200000</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <th scope="row">4</th>
+                <td>30%</td>
+                <td>1300000</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <th scope="row">5</th>
+                <td>36%</td>
+                <td>>2000000</td>
+                <td>-</td>
+              </tr>
+            </tbody>
+          </table>
+      
+           </body>
+</html>
