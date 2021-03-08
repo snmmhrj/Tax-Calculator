@@ -1,59 +1,111 @@
-
 function clearValues(){
     document.getElementById("myForm").reset()
-    document.getElementById("annualGrossSalary").reset()
-    document.getElementById("taxableIncome").reset()
-    document.getElementById("payableTax").reset()
-    document.getElementById("monthlyTax").reset()
-    document.getElementById("cashInHand").reset()   
+    document.getElementById("annualGrossSalary").innerHTML= "0.00"
+    document.getElementById("taxableIncome").innerHTML= "0.00"
+    document.getElementById("payableTax").innerHTML= "0.00"
+    document.getElementById("monthlyTax").innerHTML= "0.00"
+    document.getElementById("cashInHand").innerHTML= "0.00"
+    document.getElementById("error").innerHTML=""  
+    document.getElementById("firstSlab").innerHTML = "-"
+    document.getElementById("secondSlab").innerHTML = "-"
+    document.getElementById("thirdSlab").innerHTML = "-"
+    document.getElementById("fourthSlab").innerHTML = "-"
+    document.getElementById("fifthSlab").innerHTML = "-"
+    document.getElementById("total").innerHTML = "-"
 }
-function changeTaxSlabByMaritalStatus(){
-    
+function changeTaxSlabByMaritalStatus(){  
 }
 function taxCal(){
  let maritalStatus = document.getElementById("maritalStatus").value
  let monthlyIncome = document.getElementById("monthlyIncome").value
+ document.getElementById("error").innerHTML="" 
+ if (monthlyIncome <= 0){
+    document.getElementById("error").innerHTML="Please enter valid income"
+    return 
+ }
  let annualGrossSalary = monthlyIncome*12
  let taxAmount = 0.00
  let monthlyTax = 0.00
  let taxableIncome = annualGrossSalary
+ let indTaxAmount = {
+     "first" : 0,
+     "second" :0,
+     "third":0,
+     "fourth":0,
+     "fifth":0
+ }
  document.getElementById("annualGrossSalary").innerHTML=annualGrossSalary
  if (maritalStatus === "unmarried"){
     if (annualGrossSalary <= 400000){
         taxAmount = annualGrossSalary * 0.01
+        indTaxAmount.first = annualGrossSalary*0.01
+
     }else if (annualGrossSalary > 400000 && annualGrossSalary <= 500000){
         taxAmount = 400000*0.01 + (annualGrossSalary - 400000)*0.1
+        indTaxAmount.first = 0.01*400000
+        indTaxAmount.second = (annualGrossSalary - 400000)*0.1
     }
     else if (annualGrossSalary > 500000 && annualGrossSalary <= 700000){
         taxAmount = 400000*0.01 + 100000*0.1 + (annualGrossSalary - 500000)*0.2
+        indTaxAmount.first = 0.01*400000
+        indTaxAmount.second = 100000*0.1
+        indTaxAmount.third = (annualGrossSalary - 500000)*0.2
     }
     else if (annualGrossSalary > 700000 && annualGrossSalary <= 2000000){
-        taxAmount = 400000*0.01 + 100000*0.1 + 200000*0.2 + (annualGrossSalary - 700000)*0.3      
+        taxAmount = 400000*0.01 + 100000*0.1 + 200000*0.2 + (annualGrossSalary - 700000)*0.3  
+        indTaxAmount.first = 0.01*400000
+        indTaxAmount.second = 100000*0.1
+        indTaxAmount.third = 200000*0.2    
+        indTaxAmount.fourth = (annualGrossSalary - 700000)*0.3
     }
     else if (annualGrossSalary > 2000000){
         taxAmount = 400000*0.01 + 100000*0.1 + 200000*0.2 + 1300000*0.3 + (annualGrossSalary - 2000000)*0.36 
+        indTaxAmount.first = 0.01*400000
+        indTaxAmount.second = 100000*0.1
+        indTaxAmount.third = 200000*0.2
+        indTaxAmount.fourth = 1300000*0.3
+        indTaxAmount.fifth = (annualGrossSalary - 2000000)*0.36
     }
  }else{
     if (annualGrossSalary <= 450000){
         taxAmount = annualGrossSalary * 0.01
+        indTaxAmount.first = annualGrossSalary*0.01
     }else if (annualGrossSalary > 450000 && annualGrossSalary <= 550000){
         taxAmount = 450000*0.01 + (annualGrossSalary - 450000)*0.1
-        alert (taxAmount)
+        indTaxAmount.first = 0.01*450000
+        indTaxAmount.second = (annualGrossSalary - 450000)*0.1
     }
     else if (annualGrossSalary > 550000 && annualGrossSalary <= 750000){
         taxAmount = 450000*0.01 + 100000*0.1 + (annualGrossSalary - 550000)*0.2
+        indTaxAmount.first = 0.01*450000
+        indTaxAmount.second = 100000*0.1
+        indTaxAmount.third = (annualGrossSalary - 550000)*0.2
     }
     else if (annualGrossSalary > 750000 && annualGrossSalary <= 2000000){
         taxAmount = 450000*0.01 + 100000*0.1 + 200000*0.2 + (annualGrossSalary - 750000)*0.3
+        indTaxAmount.first = 0.01*450000
+        indTaxAmount.second = 100000*0.1
+        indTaxAmount.third = 200000*0.2    
+        indTaxAmount.fourth = (annualGrossSalary - 750000)*0.3
     }
     else if (annualGrossSalary > 2000000){
         taxAmount = 450000*0.01 + 100000*0.1 + 200000*0.2 + 1250000*0.3 + (annualGrossSalary - 2000000)*0.36 
+        indTaxAmount.first = 0.01*450000
+        indTaxAmount.second = 100000*0.1
+        indTaxAmount.third = 200000*0.2
+        indTaxAmount.fourth = 1250000*0.3
+        indTaxAmount.fifth = (annualGrossSalary - 2000000)*0.36
     }
  }
  document.getElementById("payableTax").innerHTML = (taxAmount).toFixed(2)
  document.getElementById("taxableIncome").innerHTML = taxableIncome.toFixed(2)
- //monthlyTax = (taxAmount/12).toFixed(2)
  document.getElementById("monthlyTax").innerHTML = (taxAmount/12).toFixed(2)
  document.getElementById("cashInHand").innerHTML = monthlyIncome - monthlyTax 
+ document.getElementById("firstSlab").innerHTML = indTaxAmount.first
+ document.getElementById("secondSlab").innerHTML = indTaxAmount.second
+ document.getElementById("thirdSlab").innerHTML = indTaxAmount.third
+ document.getElementById("fourthSlab").innerHTML = indTaxAmount.fourth
+ document.getElementById("fifthSlab").innerHTML = indTaxAmount.fifth
+ document.getElementById("total").innerHTML = indTaxAmount.first + indTaxAmount.second + indTaxAmount.third + indTaxAmount.fourth + indTaxAmount.fifth
 }
 

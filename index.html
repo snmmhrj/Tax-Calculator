@@ -5,7 +5,7 @@
 
     <title>Tax Calculation</title> 
     <link rel="shortcut icon" type="image/jpg" href="Tax-PNG-Image.png"/>
-    <style>
+       <style>
         /* Chrome, Safari, Edge, Opera */
         input::-webkit-outer-spin-button,
         input::-webkit-inner-spin-button {
@@ -17,28 +17,38 @@
         input[type=number] {
           -moz-appearance: textfield;
         }
+
+        .center {
+          text-align: center;
+        }
+
+        .invalid-error {
+          color: red;
+          size: 20px;
+        }
         </style>
 
   </head>
  
   <body> 
     <form id="myForm">
-        <div class="form-group">
+        <div class="form-group  col-md-3">
           <label for="maritalStatus"><b>Marital Status:</b></label>
           <select id="maritalStatus" class="form-select" aria-label="Default select example">
             <option value="married">Married</option>
             <option value="unmarried">Unmarried</option>
           </select>
         </div>
-        <div class="form-group">
+        <div class="form-group col-md-3">
           <label for="monthlyIncome"><b>Income:</b></label>
           <input type="number" autocomplete="off" class="form-control" id="monthlyIncome" min=1  placeholder="Gross Salary Per Month">
+          <div id="error" class="invalid-error"></div>
         </div>
-        
+        <div class="form-group col-md-3">
         <button type="button" class="btn btn-outline-success" onclick="taxCal()">Calculate</button> 
         <button type="button" class="btn btn-outline-primary" onclick="clearValues()">Clear</button>
-        
-      </form>
+      </div>
+    </form>
       <div class="container">
         <div class="row">
           <div class="col-sm">
@@ -62,49 +72,58 @@
             <p id="cashInHand">0.00</p>
           </div>
         </div>
-
-        <table class="table table-hover table-dark"><center><b>Tax Slab</b></center>
+        <br/><br/>
+        <table class="table table-hover table-dark"><center><b><h3>Tax Slab</h3></b></center>
             <thead>
               <tr>
                 <th scope="col">S.No.</th>
-                <th scope="col">Slab</th>
-                <th scope="col">Taxable Amount</th>
+                <th scope="col">Tax Slab Rate</th>
+                <th scope="col">Tax Slab Amount (Unmarried)</th>
+                <th scope="col">Tax Slab Amount (Married)</th>
                 <th scope="col">Tax Amount</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <th scope="row">1</th>
+                <td scope="row">1</td>
                 <td>1%</td>
                 <td>400000</td>
-                <td>-</td>
+                <td>450000</td>
+                <td id="firstSlab">-</td>
               </tr>
               <tr>
-                <th scope="row">2</th>
+                <td scope="row">2</td>
                 <td>10%</td>
                 <td>100000</td>
-                <td>-</td>
+                <td>100000</td>
+                <td id="secondSlab">-</td>
               </tr>
               <tr>
-                <th scope="row">3</th>
+                <td scope="row">3</td>
                 <td>20%</td>
                 <td>200000</td>
-                <td>-</td>
+                <td>200000</td>
+                <td id="thirdSlab">-</td>
               </tr>
               <tr>
-                <th scope="row">4</th>
+                <td scope="row">4</td>
                 <td>30%</td>
                 <td>1300000</td>
-                <td>-</td>
+                <td>1250000</td>
+                <td id="fourthSlab">-</td>
               </tr>
               <tr>
-                <th scope="row">5</th>
+                <td scope="row">5</td>
                 <td>36%</td>
                 <td>>2000000</td>
-                <td>-</td>
+                <td>>2000000</td>
+                <td id="fifthSlab">-</td>
+              </tr>
+              <tr>
+                <td colspan="4" class="center"><h5><b>Yearly Tax</b></h5></td>
+                <td id="total">-</td>
               </tr>
             </tbody>
           </table>
-      
-           </body>
+        </body>
 </html>
