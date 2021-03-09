@@ -20,7 +20,7 @@ function taxCal(){
  let monthlyIncome = document.getElementById("monthlyIncome").value
  document.getElementById("error").innerHTML="" 
  if (monthlyIncome <= 0){
-    document.getElementById("error").innerHTML="Please enter valid income"
+    document.getElementById("error").innerHTML="* Please enter valid income."
     return 
  }
  let annualGrossSalary = monthlyIncome*12
@@ -100,12 +100,12 @@ function taxCal(){
  document.getElementById("payableTax").innerHTML = (taxAmount).toFixed(2)
  document.getElementById("taxableIncome").innerHTML = taxableIncome.toFixed(2)
  document.getElementById("monthlyTax").innerHTML = (taxAmount/12).toFixed(2)
- document.getElementById("cashInHand").innerHTML = monthlyIncome - monthlyTax 
- document.getElementById("firstSlab").innerHTML = indTaxAmount.first
- document.getElementById("secondSlab").innerHTML = indTaxAmount.second
- document.getElementById("thirdSlab").innerHTML = indTaxAmount.third
- document.getElementById("fourthSlab").innerHTML = indTaxAmount.fourth
- document.getElementById("fifthSlab").innerHTML = indTaxAmount.fifth
- document.getElementById("total").innerHTML = indTaxAmount.first + indTaxAmount.second + indTaxAmount.third + indTaxAmount.fourth + indTaxAmount.fifth
+ document.getElementById("cashInHand").innerHTML = (monthlyIncome - monthlyTax).toFixed(2) 
+ document.getElementById("firstSlab").innerHTML = (indTaxAmount.first).toFixed(2)
+ document.getElementById("secondSlab").innerHTML = (indTaxAmount.second).toFixed(2)
+ document.getElementById("thirdSlab").innerHTML = (indTaxAmount.third).toFixed(2)
+ document.getElementById("fourthSlab").innerHTML = (indTaxAmount.fourth).toFixed(2)
+ document.getElementById("fifthSlab").innerHTML = (indTaxAmount.fifth).toFixed(2)
+ document.getElementById("total").innerHTML = (indTaxAmount.first + indTaxAmount.second + indTaxAmount.third + indTaxAmount.fourth + indTaxAmount.fifth).toFixed(2)
 }
 
