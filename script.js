@@ -1,3 +1,10 @@
+document.getElementById('monthlyIncome')
+  .addEventListener('keyup', function(event) {
+    if (event.code === 13) {
+      event.preventDefault();
+      document.querySelector('myForm').taxCal();
+    }
+  });
 function clearValues(){
     document.getElementById("myForm").reset()
     document.getElementById("annualGrossSalary").innerHTML= "0.00"

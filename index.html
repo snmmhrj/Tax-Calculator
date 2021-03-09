@@ -43,9 +43,18 @@
           <div id="error" class="invalid-error"></div>
         </div>
         <div class="form-group col-md-3">
-        <button type="button" class="btn btn-outline-success" onclick="taxCal()">Calculate</button> 
+        <button type="button" id="calcButton" class="btn btn-outline-success" onclick="taxCal()">Calculate</button> 
         <button type="button" class="btn btn-outline-primary" onclick="clearValues()">Clear</button>
       </div>
+      <script>
+        var input = document.getElementById("monthlyIncome");
+        input.addEventListener("keydown", function(event) {
+          if (event.keyCode === 13) {
+           event.preventDefault();
+           document.getElementById("calcButton").click();
+          }
+        });
+        </script>
     </form>
       <div class="container">
         <div class="row">
