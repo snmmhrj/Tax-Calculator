@@ -1,10 +1,3 @@
-document.getElementById('monthlyIncome')
-  .addEventListener('keyup', function(event) {
-    if (event.code === 13) {
-      event.preventDefault();
-      document.querySelector('myForm').taxCal();
-    }
-  });
 function clearValues(){
     document.getElementById("myForm").reset()
     document.getElementById("annualGrossSalary").innerHTML= "0.00"
@@ -41,7 +34,7 @@ function taxCal(){
      "fourth":0,
      "fifth":0
  }
- document.getElementById("annualGrossSalary").innerHTML=annualGrossSalary
+ document.getElementById("annualGrossSalary").innerHTML=annualGrossSalary.toFixed(2)
  if (maritalStatus === "unmarried"){
     if (annualGrossSalary <= 400000){
         taxAmount = annualGrossSalary * 0.01
