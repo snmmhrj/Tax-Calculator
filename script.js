@@ -108,7 +108,6 @@ function taxCal(){
  document.getElementById("fourthSlab").innerHTML = numberWithCommas((indTaxAmount.fourth).toFixed(2))
  document.getElementById("fifthSlab").innerHTML = numberWithCommas((indTaxAmount.fifth).toFixed(2))
  document.getElementById("total").innerHTML = numberWithCommas((indTaxAmount.first + indTaxAmount.second + indTaxAmount.third + indTaxAmount.fourth + indTaxAmount.fifth).toFixed(2))
- alert (((monthlyIncome - monthlyTax).toFixed(2)) )
 }
 
 function numberWithCommas(x) {
