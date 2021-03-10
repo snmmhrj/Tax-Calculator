@@ -97,6 +97,7 @@ function taxCal(){
         indTaxAmount.fifth = (annualGrossSalary - 2000000)*0.36
     }
  }
+ monthlyTax = taxAmount/12
  document.getElementById("payableTax").innerHTML = numberWithCommas((taxAmount).toFixed(2))
  document.getElementById("taxableIncome").innerHTML = numberWithCommas(taxableIncome.toFixed(2))
  document.getElementById("monthlyTax").innerHTML = numberWithCommas((taxAmount/12).toFixed(2))
@@ -107,6 +108,7 @@ function taxCal(){
  document.getElementById("fourthSlab").innerHTML = numberWithCommas((indTaxAmount.fourth).toFixed(2))
  document.getElementById("fifthSlab").innerHTML = numberWithCommas((indTaxAmount.fifth).toFixed(2))
  document.getElementById("total").innerHTML = numberWithCommas((indTaxAmount.first + indTaxAmount.second + indTaxAmount.third + indTaxAmount.fourth + indTaxAmount.fifth).toFixed(2))
+ alert (((monthlyIncome - monthlyTax).toFixed(2)) )
 }
 
 function numberWithCommas(x) {
